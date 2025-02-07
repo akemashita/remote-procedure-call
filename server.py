@@ -53,7 +53,7 @@ def validAnagram(str1, str2):
 
 
 def sort_list(array):
-    if len(array) < 2:
+    if not array or len(array) < 2:
         raise ValueError("文字列を空白区切りで２つ以上入力してください")
     return sorted(array, key=str.lower)
 
