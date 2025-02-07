@@ -26,7 +26,17 @@ client.on('data', (data) => {
         console.error('エラーが発生しました: ', response.error);
       }
       else {
-        console.log(`${response.result}`);
+        if (response.id !== null && response.result['commands']) {
+          console.log('---- 利用可能なコマンド一覧 ----');
+
+          for (const { name, description, example = null } of response.result['commands']) {
+            console.log(`${name}: ${description}`);
+            if (example) console.log(`  例）${example}`);
+          }
+        }
+        else {
+          console.log(`${response.result}`);
+        }
       }
     }
     catch (e) {

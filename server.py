@@ -59,20 +59,20 @@ def sort_list(array):
 
 
 def help():
-    return "利用可能なコマンド一覧:\n" + "\n".join(
-        [
-            "add:      足し算　例）add 1 2 --> 3",
-            "subtract: 引き算　例）subtract 9 2 --> 7",
-            "multiply: 掛け算　例）multiply 5 4 --> 20",
-            "divide:   割り算　例）divide 10 2 --> 5",
-            "floor:    切捨て　例）floor 1.35 --> 1",
-            "nroot:    ｎ乗根　例）nroot 3 64 --> 4",
-            "reverse:  文字を反転　例）reverse HelloWorld! --> !dlroWolleH",
-            "validAnagram:  アナグラムか確認　例）validAnagram HelloWorld! olleH!dlroW --> true",
-            "sort:     リストをソート　例）sort spade diamond clover heart --> ['clover', 'diamond', 'heart', 'spade']",
-            "help:     このヘルプを表示",
+    return {
+        "commands": [
+            {"name": "add", "description": "足し算", "example": "add 1 2 --> 3"},
+            {"name": "subtract", "description": "引き算", "example": "subtract 9 2 --> 7"},
+            {"name": "multiply", "description": "掛け算", "example": "multiply 5 4 --> 20"},
+            {"name": "divide", "description": "割り算", "example": "divide 10 2 --> 5"},
+            {"name": "floor", "description": "切捨て", "example": "floor 1.35 --> 1"},
+            {"name": "nroot", "description": "ｎ乗根", "example": "nroot 3 64 --> 4"},
+            {"name": "reverse", "description": "文字を反転", "example": "reverse HelloWorld! --> !dlroWolleH"},
+            {"name": "validAnagram", "description": "アナグラムか確認", "example": "validAnagram HelloWorld! olleH!dlroW --> true"},
+            {"name": "sort", "description": "リストをソート", "example": "sort spade diamond clover heart --> ['clover', 'diamond', 'heart', 'spade']"},
+            {"name": "help", "description": "このヘルプを表示"},
         ]
-    )
+    }
 
 
 # RPCメソッドをハッシュマップにまとめる
