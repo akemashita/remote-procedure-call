@@ -43,6 +43,10 @@ def reverse(s):
 def validAnagram(str1, str2):
     str1_clean = re.sub(r"[^a-z0-9]", "", str1.lower())
     str2_clean = re.sub(r"[^a-z0-9]", "", str2.lower())
+    
+    if len(str1_clean) != len(str2_clean):
+        return False
+    
     str1_elem = Counter(str1_clean)
     str2_elem = Counter(str2_clean)
     return str1_elem == str2_elem
