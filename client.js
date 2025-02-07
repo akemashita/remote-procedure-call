@@ -17,7 +17,7 @@ const client = net.createConnection(SOCKET_PATH);
 
 // dataイベントを監視する
 client.on('data', (data) => {
-  // console.log(`[DEBUG] received buffer: ${data}`);
+  // console.log([DEBUG] received buffer: ${data});
   data.toString().trim().split('\n').forEach((line) => {
     try {
       const response = JSON.parse(line.trim());
