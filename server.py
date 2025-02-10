@@ -50,10 +50,10 @@ class RPCMethods:
     def validAnagram(str1, str2):
         str1_clean = re.sub(r"[^a-z0-9]", "", str1.lower())
         str2_clean = re.sub(r"[^a-z0-9]", "", str2.lower())
-        
+
         if len(str1_clean) != len(str2_clean):
             return False
-        
+
         str1_elem = Counter(str1_clean)
         str2_elem = Counter(str2_clean)
         return str1_elem == str2_elem
@@ -103,7 +103,7 @@ class RequestHandler:
                 "sort": RPCMethods.sort_list,
                 "help": RPCMethods.help,
             }
-    
+
     def handle_client(self):
         try:
             current_thread_id = threading.get_ident()
@@ -194,7 +194,7 @@ class RPCServer:
         try:
             # ストリームのエンドポイントとなるソケットを作成する
             self.sock = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-            
+
             # サーバの UNIX ソケットの場所を設定する
             with open(config_path) as f:
                 config = json.load(f)
@@ -204,13 +204,13 @@ class RPCServer:
                 "設定ファイル（config.json）が見つかりません。プログラムを終了します。"
             )
             exit(1)
-        
+
         # 以前の接続が残っていた場合に備えて、サーバアドレスを削除する（unlink）
         try:
             os.unlink(self.server_address)
         except FileNotFoundError:
             pass
-        
+
         print("Starting up on {}".format(self.server_address))
 
         # サーバのアドレスにソケットを接続する（bind）
@@ -238,7 +238,7 @@ class RPCServer:
 
                 # クライアントごとにスレッドを作成
                 client_thread = threading.Thread(target=client.handle_client)
-                
+
                 # クライアントプログラムを終了したらスレッドも終了
                 client_thread.daemon = True
                 client_thread.start()
