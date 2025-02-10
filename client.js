@@ -17,7 +17,7 @@ const client = net.createConnection(SOCKET_PATH);
 
 // dataイベントを監視する
 client.on('data', (data) => {
-  // console.log([DEBUG] received buffer: ${data});
+  // console.log(`[DEBUG] received buffer: ${data}`);
   data.toString().trim().split('\n').forEach((line) => {
     try {
       const response = JSON.parse(line.trim());
@@ -26,7 +26,7 @@ client.on('data', (data) => {
         console.error('エラーが発生しました: ', response.error);
       }
       else {
-        if (response.id !== null && response.result['commands']) {
+        if (response.id !== null && response.result?.commands) {
           console.log('---- 利用可能なコマンド一覧 ----');
 
           for (const { name, description, example = null } of response.result['commands']) {
@@ -69,7 +69,7 @@ function promptUser() {
 function sendRequest(method, params) {
   const request = {
     method: method,
-    params: Array.isArray(params) ? params : { ...params },
+    params: params,
     id: Math.floor(Math.random() * 1000)
   };
 
